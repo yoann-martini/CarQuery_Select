@@ -2,8 +2,13 @@
   
       
       /* get the car data and show on card*/
-      $('#brand-select').on('change', function() {
+      $('#brand-select').on('click', function() {
 
+$('.card').addClass("d-none");
+
+      });
+      $('#brand-select').on('change', function() {
+        
         let brandIndex = $(this).find(":checked").val();
         $.get(`/brands/${brandIndex}`, (models) => {
 
@@ -43,67 +48,67 @@ $('#model-select').html(options);
         $.get(`infos/${brandIndex}/${modelIndex}`, (infos) => {
         let info=infos.infos.Trims[0];
 
-     if (info.model_make_id !=null && info.model_name !=null){
+     if (info.model_make_id !="" && info.model_name !=""){
           $("#car-marque-nom").text(`${info.model_make_id} ${info.model_name}`);
         }else{
           $("#car-marque-nom").addClass("d-none");
         }
 
-        if (info.model_make_id!=null){
+        if (info.model_make_id!=""){
           $("#car-marque").text(`Marque : ${info.model_make_id}`);
         }else{
           $("#car-marque").addClass("d-none");
         }
 
-        if (info.model_name!=null){
+        if (info.model_name!=""){
           $("#car-nom").text(`Nom : ${info.model_name}`);
         }else{
           $("#car-nom").addClass("d-none");
         }
 
-        if (info.model_trim!=null){
+        if (info.model_trim!=""){
           $("#car-motorisation").text(`Motorisation : ${info.model_trim}`);
         }else{
           $("#car-motorisation").addClass("d-none");
         }
 
-        if (info.model_body!=null){
+        if (info.model_body!=""){
           $("#car-type").text(`Type : ${info.model_body}`);
         }else{
           $("#car-type").addClass("d-none");
         }
 
-        if (info.model_make_country!=null){
+        if (info.model_make_country!=""){
           $("#car-pays-origine").text(`Pays d'origine : ${info.model_make_country}`);
         }else{
           $("#car-pays-origine").addClass("d-none");
         }
 
-        if (info.model_engine_fuel!=null){
+        if (info.model_engine_fuel!=""){
           $("#car-fuel").text(`Carburant : ${info.model_engine_fuel}`);
         }else{
           $("#car-fuel").addClass("d-none");
         }
 
-        if (info.model_doors!=null){
+        if (info.model_doors!=""){
           $("#car-portes").text(`Nombre de portes : ${info.model_doors}`);
         }else{
           $("#car-portes").addClass("d-none");
         }
 
-        if (info.model_seats!=null){
+        if (info.model_seats!=""){
           $("#car-sieges").text(`Nombre de sièges : ${info.model_seats}`);
         }else{
           $("#car-sieges").addClass("d-none");
         }
 
-        if (info.model_transmission_type!=null){
+        if (info.model_transmission_type!=""){
           $("#car-bdv").text(`Boite de vitesse : ${info.model_transmission_type}`);
         }else{
           $("#car-bdv").addClass("d-none");
         }
 
-        if (info.model_year!=null){
+        if (info.model_year!=""){
           $("#car-year").text(`Année de production : ${info.model_year}`);
         }else{
           $("#car-year").addClass("d-none");
